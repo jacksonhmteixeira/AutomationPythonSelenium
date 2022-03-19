@@ -2,23 +2,23 @@ import time
 from behave import *
 from Page.Login import Login
 
-@Given(u'que estou na tela de login')
+@Given(u'I am on the Login Page')
 def login_page(context):
     context.Login = Login()
-    context.Login.abrirNavegadorLogin()
+    context.Login.openBrowserLogin()
 
-@When(u'eu preencher o campo email com {email}')
-def preencher_email(context, email):
-    context.Login.preencherEmail(email)
+@When(u'to fill with {email} in the email field')
+def fill_email(context, email):
+    context.Login.fillEmail(email)
 
-@When(u'preencher o campo senha com {senha}')
-def preencher_senha(context, senha):
-    context.Login.preencherSenha(senha)
+@When(u'to fill with {password} in the password field')
+def fill_password(context, password):
+    context.Login.fillPassword(password)
 
-@When(u'clicar no botao ENTRAR')
-def clicar_botao_entrar(context):
-    context.Login.clicarBotaoEntrar()
+@When(u'click the button ENTRAR')
+def click_enter_button(context):
+    context.Login.clickEnterButton()
 
-@Then(u'o sistema vai direcionar para')
-def verificar_pagina_painel(context):
+@Then(u'the system directs you to the home pages')
+def check_dashboard_page(context):
     time.sleep(3)

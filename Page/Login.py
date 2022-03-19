@@ -3,19 +3,19 @@ from Base.SeleniumWebdriver import Base
 
 class Login():
 
-    idCampoEmail = 'email'
-    idCampoSenha = 'password'
-    idBotaoEntrar = 'buttonLogin'
+    emailFieldId = 'email'
+    passwordFieldId = 'senha'
+    enterButtonId = 'buttonLogin'
 
-    def abrirNavegadorLogin(self):
+    def openBrowserLogin(self):
         self.base = Base(driver=webdriver)
-        self.base.abrirNavegador()
+        self.base.openBrowser()
 
-    def preencherEmail(self, valorCampo):
-        self.base.preencherCampoID(self.idCampoEmail, valorCampo)
+    def fillEmail(self, fieldValue):
+        self.base.fillFieldId(self.emailFieldId, fieldValue)
 
-    def preencherSenha(self, valorCampo):
-        self.base.preencherCampoID(self.idCampoSenha, valorCampo)
+    def fillPassword(self, fieldValue):
+        self.base.fillFieldId(self.passwordFieldId, fieldValue)
 
-    def clicarBotaoEntrar(self):
-        self.base.clicar(self.idBotaoEntrar)
+    def clickEnterButton(self):
+        self.base.click(self.enterButtonId)
