@@ -1,23 +1,34 @@
 Feature: Verify login functionality
 
+    @login @LoginValid
     Scenario Outline: Loggin in
         Given I am on the Login Page
-        When to fill with <email> in the email field
-        And to fill with <password> in the password field
-        And click the button ENTRAR
+        When filling with <email> and <password>
+        And click the enter button
         Then the system directs you to the home pages
 
         Examples:
             |email                        |password       |
             |plataforma@engenheiroqa.com  |plataformaEQA  |
 
-#    Scenario Outline: Invalid Login
-#        Given I am on the Login Page
-#        When to fill <email> in the email field
-#        And to fill with <password> in the password field
-#        And click the button "Entrar"
-#        Then then system show a error message
-#
-#        Examples:
-#            |email                             | password        |
-#            | logininvalide@email.com          | invalidPassword |
+    @Login @MandatoryMessage
+    Scenario Outline: Mandatory Message
+        Given I am on the Login Page
+        When filling with <email> and <password>
+        And click the enter button
+        Then the system displays the message <emailErrorMessage> and <passwordErrorMessage>
+
+        Examples:
+            |  emailErrorMessage           | passwordErrorMessage  |
+            |  E-mail é obrigatorio!       | E-mail é obrigatorio! |
+
+
+    Scenario Outline:
+        Given I am on the Login Page
+        When filling with <email> and <password>
+        Then click the enter button
+        Then the system displays the message <errorMessage>
+
+        Examples:
+            | errorMessage              |
+            | Usuário/Senha incorreto!  |
