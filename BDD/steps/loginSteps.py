@@ -1,24 +1,30 @@
 import time
 from behave import *
-from Page.Login import Login
+from Page.LoginPage import Login
 
 @Given(u'I am on the Login Page')
 def login_page(context):
     context.Login = Login()
     context.Login.openBrowserLogin()
 
-@When(u'to fill with {email} in the email field')
-def fill_email(context, email):
+@When(u'filling with {email} and {password}')
+def fill_email(context, email, password):
     context.Login.fillEmail(email)
-
-@When(u'to fill with {password} in the password field')
-def fill_password(context, password):
     context.Login.fillPassword(password)
 
-@When(u'click the button ENTRAR')
+@When(u'click the enter button')
 def click_enter_button(context):
     context.Login.clickEnterButton()
 
 @Then(u'the system directs you to the home pages')
 def check_dashboard_page(context):
-    time.sleep(3)
+    context.Login.verifyPageDashBoard()
+
+@Then(u'the system display the message {errorMessage}')
+def system_displays_the_message(context, errorMessage):
+    context.Login.verifyErrorMessage(errorMessage)
+
+@Then(u'the system displays the message {emailErrorMessage} and {passwordErrorMessage}')
+def system_displays_the_message_error(context, emailErrorMessage, passwordErrorMessage):
+    context.Login.verifyRequiredFieldLogin(emailErrorMessage)
+    context.Login.verifyRequiredFieldPassWord(passwordErrorMessage)
