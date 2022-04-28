@@ -1,5 +1,9 @@
 Feature: Verify login functionality
 
+    #### PRECONDITION TO OPEN THE BROWSER
+    Background: PRECONDITION - OPEN BROWSER
+        Given I open the browser
+
     @login @LoginValid
     Scenario Outline: Loggin in
         Given I am on the Login Page
@@ -25,8 +29,14 @@ Feature: Verify login functionality
     @Login @MandatoryMessage
     Scenario Outline: Mandatory Message
         Given I am on the Login Page
+        When not filling the required field
         Then the system displays the message <emailErrorMessage> and <passwordErrorMessage>
 
         Examples:
             |  emailErrorMessage           | passwordErrorMessage  |
             |  E-mail é obrigatorio!       | Senha é obrigatório! |
+
+    #### POSTCONDITION TO CLOSE THE BROWSER
+    Scenario: POSTCONDITION - CLOSE BROWSER
+        Given I want to close the browser
+        Then I close the browser

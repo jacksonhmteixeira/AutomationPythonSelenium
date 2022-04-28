@@ -1,5 +1,3 @@
-from selenium import webdriver
-from Base.SeleniumWebdriver import Base
 from selenium.webdriver.common.by import By
 
 class Login():
@@ -12,9 +10,8 @@ class Login():
     messageRequiredLoginXpath = '//small[contains(text(),"E-mail é obrigatorio!")]'
     messageRequiredPasswordXpath = '//small[contains(text(), "Senha é obrigatório!")]'
 
-    def openBrowserLogin(self):
-        self.base = Base(driver=webdriver)
-        self.base.openBrowser()
+    def driverLoginPage(self, driver):
+        self.base = driver
 
     def fillEmail(self, fieldValue):
         self.base.fillFieldId(self.emailFieldId, fieldValue)
@@ -23,7 +20,7 @@ class Login():
         self.base.fillFieldId(self.passwordFieldId, fieldValue)
 
     def clickEnterButton(self):
-        self.base.click(self.enterButtonId)
+        self.base.click(By.ID, self.enterButtonId)
 
     def verifyErrorMessage(self, text):
         self.base.waitForTheTextToBePresent(By.ID, self.toastContainerId, text)
@@ -36,3 +33,8 @@ class Login():
 
     def verifyRequiredFieldPassWord(self, text):
         self.base.waitForTheTextToBePresent(By.XPATH, self.messageRequiredPasswordXpath, text)
+
+    def notFillingTheRequiredField(self):
+        self.base.click(By.ID, self.emailFieldId)
+        self.base.click(By.ID, self.passwordFieldId)
+        self.base.click(By.ID, self.emailFieldId)
