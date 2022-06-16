@@ -1,6 +1,6 @@
-Feature: Verify Market functionality
+Feature: Verify Market Functionality
 
-  #### PRECONDITION TO OPEN THE BROWSER
+  # PRECONDITION TO OPEN THE BROWSER
   Background: PRECONDITION - OPEN BROWSER
       Given I open the browser
 
@@ -28,7 +28,7 @@ Feature: Verify Market functionality
       |plataforma@engenheiroqa.com  | plataformaEQA | Teclado                 |
       |plataforma@engenheiroqa.com  | plataformaEQA | Monitor 24" polegadas   |
 
-  #### POSTCONDITION TO CLOSE THE BROWSER
+  # POSTCONDITION TO CLOSE THE BROWSER
   Scenario: POSTCONDITION - CLOSE BROWSER
       Given I want to close the browser
       Then I close the browser

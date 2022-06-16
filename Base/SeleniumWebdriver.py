@@ -10,7 +10,7 @@ class Base():
 
     def __init__(self, driver):
         self.driver = driver
-        self.driver = webdriver.Chrome(os.getcwd() + ".\chromedriver.exe")
+        self.driver = webdriver.Chrome("/Users/jacksonhmt/Documents/REPOSITORIO/AutomationPythonSelenium/chromedriver")
 
     def openBrowser(self):
         self.driver.maximize_window()
