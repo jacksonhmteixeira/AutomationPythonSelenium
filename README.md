@@ -1,1 +1,2 @@
-# AutomationPythonSelenium
+# Automação utilizando Python e Selenium
+
